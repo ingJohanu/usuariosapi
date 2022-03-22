@@ -1,0 +1,32 @@
+<div class="users-container">
+    <div class="users-button">
+        <button mat-raised-button color="primary" (click)="newUsers()" >New Usuario</button>
+    </div>
+   <div>
+     <div class="users-card" *ngFor="let item of users" >
+        <mat-card>
+            <mat-card-header >
+                <div mat-card-avatar class="users-header-image"></div>
+                <mat-card-title>{{item.nombre}}</mat-card-title> 
+                <mat-card-subtitle>{{item.identificacion}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{item.contacto}}</p>  
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button class="btn btn-light" (click)="editUsers(item.id)">Editar</button>
+                <button class="btn btn-secundary"  (click)="detailUsers(item.id)">Details</button>
+            </mat-card-actions>
+        </mat-card>
+      
+     </div>
+    
+   </div>
+   <div class="paginator-container">
+    <mat-paginator [length]="numberRecords"  [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"  (page)="changePage($event)">
+
+    </mat-paginator>
+</div>
+
+</div>

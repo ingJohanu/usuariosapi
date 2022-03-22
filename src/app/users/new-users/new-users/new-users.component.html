@@ -1,0 +1,43 @@
+<div class="new-users-container">
+    <H3>Editar Cliente</H3>
+     <form [formGroup]="newUsersForm" (ngSubmit)="SaveUsers()">
+        <mat-dialog-content>
+          <div class="element-form">
+            
+  
+             <mat-form-field class="new-users-form-field">
+                <input type="text" matInput placeholder="nombre" arial-label="Usuario Name" formControlName="nombre"/>
+                <mat-error *ngIf="newUsersForm.get('nombre').hasError('required')">Nombre is required</mat-error>
+                <mat-error *ngIf="newUsersForm.get('nombre').hasError('cannonContainSpace')"> cannot contain</mat-error>
+             </mat-form-field> 
+          </div> 
+          <div class="element-form">
+              <mat-form-field class="new-users-form-field">
+                 <input type="text" matInput placeholder="identificacion" arial-label="Identificacion" formControlName="identificacion"/>
+                 <mat-error *ngIf="newUsersForm.get('identificacion').hasError('required')">identificacion is required</mat-error> 
+                 <mat-error *ngIf="newUsersForm.get('identificacion').hasError('cannonContainSpace')">identificacion cannot contain space</mat-error>
+              </mat-form-field>
+          </div>
+          <div class="element-form">
+             <mat-form-field class="new-users-form-field">
+                <input type="text" matInput placeholder="correo" arial-label="correo" formControlName="correo"/> 
+                <mat-error *ngIf="newUsersForm.get('correo').hasError('required')">Correo is required</mat-error>
+                <mat-error *ngIf="newUsersForm.get('correo').hasError('cannonContainSpace')">Correo cannot contain space</mat-error>
+             </mat-form-field>
+          </div>
+  
+          <div class="element-form">
+             <mat-form-field class="new-users-form-field">
+                <input type="text" matInput placeholder="contacto" arial-label="contacto" formControlName="contacto">
+                <mat-error *ngIf="newUsersForm.get('contacto').hasError('required')">Contacto is required</mat-error>
+                <mat-error *ngIf="newUsersForm.get('contacto').hasError('required')">Contacto cannot contain Space</mat-error>
+             </mat-form-field>
+          </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+           <button mat-button mat-dialog-close>Close</button> 
+           <button mat-raised-button color="prymari" type="submit" [disabled]="newUsersForm.invalid">Save</button>
+        </mat-dialog-actions>
+     </form>
+  </div>
+

@@ -1,0 +1,39 @@
+<div class="login-container">
+    <mat-card class="login-card">
+        <mat-card-content>
+            <div>
+                <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+                    <div class="login-control-input">
+                        <mat-icon>email</mat-icon>
+                        <mat-form-field class="login-form-field">
+                            <input matInput placeholder="usuario" aria-label="usuario" formControlName="usuario"/>  
+                            <mat-error *ngIf="loginForm.controls['usuario'].hasError('required')">usuario is required</mat-error>
+                           
+                            <mat-error *ngIf="loginForm.controls['usuario'].hasError('usuario')">usuario cannot contain epace</mat-error>
+                                              
+                        </mat-form-field>                  
+                    </div>
+                    <div class="login-control-input">
+                        <mat-icon>vpn_key</mat-icon>
+                        <mat-form-field class="login-form-field">
+                            <input matInput placeholder="contraseña" aria-label="contraseña" formControlName="contraseña" type="contraseña"/>  
+                            <mat-error *ngIf="loginForm.controls['contraseña'].hasError('required')">Password is required</mat-error>   
+                            <mat-error *ngIf="loginForm.controls['contraseña'].hasError('minlength')">Password is a least two characters</mat-error> 
+                            <mat-error *ngIf="loginForm.controls['contraseña'].hasError('maxlength')">Password can not be longer that 50 characters</mat-error> 
+                            <mat-error *ngIf="loginForm.controls['contraseña'].hasError('cannonContainSpace')">Password cannon space</mat-error>                
+                        </mat-form-field>     
+                    </div>
+                    <br />
+                    <div *ngIf="loginError">
+                        <p class="login-error">{{loginError}}</p>
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
+                    </div>
+        
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
